@@ -1,26 +1,46 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import * as React from 'react';
+import Auth from '../src/components/auth/Auth';
+import Home from './components/home/Home';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+
+type StateType = {
+  sessionToken: any
+}
+
+class App extends React.Component<{}, StateType> {
+  constructor(props: any){
+    super(props);
+    this.state={
+      sessionToken: ''
+
+    }
+    this.clearToken=this.clearToken.bind(this)
+  }
+  componentDidMount(){
+    if(localStorage.getItem("token")) {
+      this.setState({sessionToken:localStorage.getItem("token")});
+    }
+  }
+ 
+  updateToken = (newToken: string) => {
+    localStorage.setItem("token", newToken);
+    this.setState({sessionToken:newToken});
+    console.log(this.state.sessionToken);
+  };
+  clearToken(){
+    localStorage.removeItem('token');
+    this.setState({sessionToken: ''})
+  }
+
+  render(){
+    if(this.state.sessionToken === localStorage.getItem("token")){
+      return(<Home token={this.state.sessionToken} clearToken={this.clearToken}/>)
+    }else{
+      return(
+        <Auth updateToken ={this.updateToken} />
+      )
+    }
+  }
 }
 
 export default App;
