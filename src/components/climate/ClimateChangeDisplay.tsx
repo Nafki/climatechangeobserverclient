@@ -16,6 +16,7 @@ import {Favorite, Share,MoreVert, Edit} from '@mui/icons-material';
 import DeleteIcon from '@mui/icons-material/Delete';
 import { Link} from "react-router-dom";
 import Comment from '../climate/Comment';
+import APIURL from '../../helpers/environment';
 
 type StateTypes={
   weatherTitle: string,
@@ -49,7 +50,7 @@ export default class ClimateChangeDisplay extends React.Component<PropsTypes, St
      this.getCommentDataById(this.props.myClimateData.id)
     }
       getCommentDataById= async (climate_id: number)=>{
-        await fetch(`http://localhost:3000/comment/${climate_id}`,{
+        await fetch(`${APIURL}/comment/${climate_id}`,{
              method: "GET",
              headers: {
              "Content-Type": "application/json",
@@ -71,7 +72,7 @@ export default class ClimateChangeDisplay extends React.Component<PropsTypes, St
     }
     deleteClimate =(id:number) =>{
      
-      fetch('http://localhost:3000/climate/'+ id,{
+      fetch(`${APIURL}/climate/`+ id,{
           method: "Delete",
           headers: {
           "Content-Type": "application/json",

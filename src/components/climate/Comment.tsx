@@ -15,7 +15,7 @@ import { createTheme, ThemeProvider } from '@mui/material/styles';
 import {Fab} from '@mui/material'
 import AddCommentIcon from '@mui/icons-material/AddComment';
 import { Description } from '@mui/icons-material';
-
+import APIURL from '../../helpers/environment';
 const theme = createTheme();
 
 type StateType = {
@@ -51,7 +51,7 @@ export default class CreateComment extends React.Component<PropsType, StateType>
             
         }
 
-            fetch('http://localhost:3000/comment', {
+            fetch(`${APIURL}/comment`, {
                 method: "POST",
                 headers: {
                 "Content-Type": "application/json",

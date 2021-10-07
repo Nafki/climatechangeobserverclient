@@ -12,7 +12,7 @@ import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
-
+import APIURL from '../../helpers/environment';
 const theme = createTheme();
 type PropsType ={
   updateToken: any
@@ -42,7 +42,7 @@ type PropsType ={
                 email: data.get('email'),
                 password: data.get('password')
              }
-             fetch(`http://localhost:3000/user/register`,{
+             fetch(`${APIURL}/user/register`,{
                 method: "POST",
                 headers: {
                 "Content-Type": "application/json"

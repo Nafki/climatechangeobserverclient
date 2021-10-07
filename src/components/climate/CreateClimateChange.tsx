@@ -14,6 +14,7 @@ import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { FileUpload } from '@mui/icons-material';
 import axios from 'axios';
+import APIURL from '../../helpers/environment';
 
 const theme = createTheme();
 
@@ -64,7 +65,7 @@ export default class CreateClimateChange extends React.Component<PropsType, Stat
             imageUrl:data.get('image') ,
         }
     //console.log(this.props.updateToken)
-            fetch('http://localhost:3000/climate/climate',{
+            fetch(`${APIURL}/climate/climate`,{
                 method: "POST",
                 headers: {
                 "Content-Type": "application/json",

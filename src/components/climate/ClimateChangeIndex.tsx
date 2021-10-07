@@ -3,6 +3,7 @@ import React, {Component} from 'react';
 import ClimateChangeDisplay from './ClimateChangeDisplay';
 import Grid from '@mui/material/Grid';
 //import {Grid Item} from '@mui/material'
+import APIURL from '../../helpers/environment';
 
 type climateChange = {
     user_id: any,
@@ -27,7 +28,7 @@ export default class ClimateChangeIndex extends Component<PropsType, StateType> 
         }
     }
     componentDidMount(){
-        fetch('http://localhost:3000/climate/all',{
+        fetch(`${APIURL}/climate/all`,{
             method: "GET",
             headers: {
             "Content-Type": "application/json"
@@ -57,10 +58,4 @@ export default class ClimateChangeIndex extends Component<PropsType, StateType> 
         )
     }
 }
-    
-
-
-
-
-
 

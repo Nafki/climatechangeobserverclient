@@ -13,6 +13,7 @@ import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { isTemplateLiteralTypeSpan } from 'typescript';
+import APIURL from '../../helpers/environment';
 
 const theme = createTheme();
 
@@ -49,7 +50,7 @@ export default class editClimateChange extends React.Component<PropsTypes, State
         
     }
     getClimateDataById= async (climate_id:string)=>{
-       await fetch(`http://localhost:3000/climate/${climate_id}`,{
+       await fetch(`${APIURL}/climate/${climate_id}`,{
             method: "GET",
             headers: {
             "Content-Type": "application/json",
@@ -82,7 +83,7 @@ export default class editClimateChange extends React.Component<PropsTypes, State
             location: data.get('location')
             
         }
-                fetch('http://localhost:3000/climate/'+ this.state.climate_id, {
+                fetch(`${APIURL}/climate/`+ this.state.climate_id, {
                     method: "PUT",
                     headers: {
                     "Content-Type": "application/json",

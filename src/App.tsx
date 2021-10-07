@@ -1,7 +1,7 @@
 import * as React from 'react';
 import Auth from '../src/components/auth/Auth';
 import Home from './components/home/Home';
-
+import APIURL from './helpers/environment';
 
 type StateType = {
   sessionToken: any
